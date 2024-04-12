@@ -13,7 +13,7 @@ namespace Vision_Automix
 {
     class Companion
     {
-        public void sendPush(RuntimeData runData, string ip, int port, int page, int bank)
+        public void sendPush(RuntimeData runData, string ip, int port, int page, int row, int column)
         {
             if (runData.companionOutputEnabled == true)
             {
@@ -21,7 +21,7 @@ namespace Vision_Automix
 
                 try
                 {
-                    string message = ("BANK-PRESS " + page.ToString() + " " + bank.ToString());
+                    string message = string.Format("LOCATION {0}/{1}/{2} PRESS", page, row, column);
 
                     byte[] packetData = System.Text.ASCIIEncoding.ASCII.GetBytes(message);
 
